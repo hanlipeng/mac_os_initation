@@ -7,3 +7,7 @@
 
 # Local user config that shouldn't be in git
 .zshrc.local
+
+# IDE specific
+.vscode/
+.idea/
