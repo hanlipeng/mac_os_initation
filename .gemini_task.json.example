@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "task_id": "example-task-20250725",
+  "description": "This is an example of a task file. It demonstrates how to add a new alias and then verify it.",
+  "status": "in_progress",
+  "creation_timestamp": "2025-07-25T18:30:00Z",
+  "last_updated_timestamp": "2025-07-25T18:35:10Z",
+  "steps": [
+    {
+      "step_id": 1,
+      "name": "create_alias_file",
+      "description": "Create a new alias file for git commands.",
+      "status": "pending",
+      "tool_call": {
+        "tool_name": "write_file",
+        "parameters": {
+          "file_path": "<PROJECT_ROOT>/zsh_config/aliases/git.aliases.zsh",
+          "content": "alias gco='git checkout'\nalias gst='git status'"
+        }
+      },
+      "result": null
+    },
+    {
+      "step_id": 2,
+      "name": "verify_alias_file",
+      "description": "Read the content of the newly created alias file to verify it.",
+      "status": "pending",
+      "tool_call": {
+        "tool_name": "read_file",
+        "parameters": {
+          "absolute_path": "<PROJECT_ROOT>/zsh_config/aliases/git.aliases.zsh"
+        }
+      },
+      "result": null
+    },
+    {
+      "step_id": 3,
+      "name": "commit_changes",
+      "description": "Commit the new alias file to the repository.",
+      "status": "pending",
+      "tool_call": {
+        "tool_name": "run_shell_command",
+        "parameters": {
+          "command": "git add zsh_config/aliases/git.aliases.zsh && git commit -m 'feat: Add git aliases'"
+        }
+      },
+      "result": null
+    }
+  ]
+}
