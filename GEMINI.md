@@ -44,6 +44,15 @@ This project follows a set of autonomous and collaborative principles:
 3.  **Framework Evolution**: The framework's own tools (e.g., `zsh-edit`) will be updated to stay in sync with the project structure.
 4.  **Language**: All communication will be in Chinese.
 
+## Task Persistence and Recovery
+
+To ensure robustness against interruptions (e.g., closing the terminal), this project uses a task persistence and recovery mechanism.
+
+1.  **Task Planning & Serialization**: For any multi-step task, Gemini will first formulate a detailed, step-by-step plan. This plan is then serialized and saved to a `.gemini_task.json` file in the project root *before* execution begins.
+2.  **State Tracking**: The `.gemini_task.json` file tracks the status of each step (e.g., `pending`, `completed`). As Gemini completes each step, it updates the status in this file.
+3.  **Interruption & Recovery**: If the `gemini-cli` session is terminated, the `.gemini_task.json` file remains on disk. Upon restart, Gemini will detect this file and prompt to resume the task from the last uncompleted step.
+4.  **Task Completion**: Once all steps in the plan are successfully executed, the `.gemini_task.json` file is automatically deleted.
+
 ## Core User Command: `zsh-edit`
 
 The primary method for interacting with this configuration framework is the `zsh-edit` command. It supports keywords for every major component of the framework and has full tab-completion.
