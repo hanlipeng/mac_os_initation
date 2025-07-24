@@ -1,0 +1,9 @@
+# macOS specific
+.DS_Store
+
+# Zsh specific cache/history files (if any are ever created here)
+.zsh_history
+.zsh_sessions/
+
+# Local user config that shouldn't be in git
+.zshrc.local
