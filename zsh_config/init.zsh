@@ -1,19 +1,36 @@
 #!/bin/zsh
 
-# 找到 init.zsh 脚本所在的目录, 作为我们配置的根目录
+# Find the directory where init.zsh is located to use as the root for our config
 export ZSH_CUSTOM_DIR=${0:a:h}
 
-# 定义加载顺序 (可以根据你的需要调整)
-# 建议先加载环境变量和路径, 再加载别名和函数
-typeset -a config_dirs
-config_dirs=(
-  "$ZSH_CUSTOM_DIR/settings"
-  "$ZSH_CUSTOM_DIR/exports"
-  "$ZSH_CUSTOM_DIR/lib"
-  "$ZSH_CUSTOM_DIR/aliases"
-  "$ZSH_CUSTOM_DIR/core" # Load framework functions
-  "$ZSH_CUSTOM_DIR/functions" # Load user-defined functions
+# --- Stage 1: Definitions ---
+# Load all configurations that define variables, aliases, and functions.
+# The order here is important for dependencies (e.g., aliases before libs that use them).
+
+typeset -a definition_dirs
+definition_dirs=(
+  "$ZSH_CUSTOM_DIR/settings"    # Oh My Zsh settings (theme, plugins)
+  "$ZSH_CUSTOM_DIR/exports"     # Environment variables and secrets loader
+  "$ZSH_CUSTOM_DIR/aliases"     # All alias definitions
+  "$ZSH_CUSTOM_DIR/lib"         # Third-party tool configurations (pyenv, direnv)
+  "$ZSH_CUSTOM_DIR/core"        # Core framework functions (zsh-edit)
+  "$ZSH_CUSTOM_DIR/functions"   # User-defined functions
 )
+
+for dir in $definition_dirs; do
+  if [[ -d "$dir" ]]; then
+    for file in $(find "$dir" -name "*.zsh" -o -name "*.sh"); do
+      if [[ -r "$file" ]]; then
+        source "$file"
+      fi
+    done
+  fi
+done
+
+# Clean up the definition directories array
+unset definition_dirs
+
+# --- Stage 2: Completions & Startup ---
 
 # Add our custom completions directory to the function path
 fpath=($ZSH_CUSTOM_DIR/completions $fpath)
@@ -23,13 +40,16 @@ fpath=($ZSH_CUSTOM_DIR/completions $fpath)
 autoload -U compinit
 compinit -i
 
-# 循环加载所有 .zsh 文件
-for dir in $config_dirs; do
-  # 检查目录是否存在
+# Load all startup scripts that execute commands.
+# These run last, ensuring the full environment is ready.
+typeset -a startup_dirs
+startup_dirs=(
+  "$ZSH_CUSTOM_DIR/startup"
+)
+
+for dir in $startup_dirs; do
   if [[ -d "$dir" ]]; then
-    # 查找所有 .zsh 或 .sh 后缀的文件并加载
     for file in $(find "$dir" -name "*.zsh" -o -name "*.sh"); do
-      # 确保文件可读
       if [[ -r "$file" ]]; then
         source "$file"
       fi
@@ -37,5 +57,5 @@ for dir in $config_dirs; do
   fi
 done
 
-# 清理, 避免污染环境
-unset config_dirs
+# Clean up the startup directories array
+unset startup_dirs

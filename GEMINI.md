@@ -6,46 +6,36 @@ This project is a modular Zsh configuration management system. Its purpose is to
 
 ## Directory Structure
 
-The core logic resides in the `zsh_config/` directory:
+The framework is organized to clearly separate definitions from execution scripts:
 
 ```
 zsh_config/
 ├── README.md
-├── core/
-│   └── core.functions.zsh      # Core framework functions like zsh-edit
-├── settings/
-│   └── oh-my-zsh.settings.zsh  # Oh My Zsh theme and plugins
-├── exports/
-│   ├── api_keys.exports.zsh    # Public loader for secrets
-│   ├── api_keys.local.zsh      # (Git Ignored) Private secrets file
-│   └── path.exports.zsh        # PATH modifications
-├── lib/
-│   # User-supplied configurations for third-party tools
-├── aliases/
-│   # User-defined aliases
-├── functions/
-│   # User-defined functions
-├── completions/
-│   └── _zsh-edit.zsh           # Zsh completion script for the zsh-edit function
-└── init.zsh                    # Core script that loads all configs
+├── core/         # Core framework functions (e.g., zsh-edit)
+├── settings/     # Oh My Zsh theme and plugin settings
+├── exports/      # Environment variables and secrets loaders
+├── aliases/      # User-defined aliases
+├── lib/          # Configurations for 3rd-party tools (pyenv, direnv)
+├── functions/    # User-defined functions
+├── completions/  # Zsh completion scripts
+└── startup/      # Scripts to be executed at the end of the loading process
 ```
+
+## Loading Architecture
+
+The `init.zsh` script implements a robust two-stage loading process to prevent dependency issues:
+
+1.  **Definition Stage**: Loads all directories that define the shell environment (`settings`, `exports`, `aliases`, `lib`, `core`, `functions`). After this stage, all variables, aliases, and functions are available.
+2.  **Startup Stage**: Executes all scripts in the `startup/` directory. These scripts can safely use any alias or function defined in the first stage.
 
 ## Development Workflow
 
 This project follows a set of autonomous and collaborative principles:
 
-1.  **Autonomous Documentation**: After completing a significant change (new feature, refactor, or workflow adjustment), Gemini will autonomously determine if the `GEMINI.md` context file needs updating. If so, it will be updated to reflect the latest state of the project.
-
-2.  **Atomic Commits**: All related code and documentation changes will be bundled into a single, atomic commit with a clear, descriptive message. This ensures a clean and understandable project history.
-
-3.  **Framework Evolution**: When a new directory or a core feature is added, the framework's own tools (e.g., `zsh-edit` and its completions) will be updated to support it, keeping the project self-consistent.
-
-## Key Files & Logic
-
--   `init.zsh`: The main entry point. It loads all configuration files in a specific order.
--   `core/core.functions.zsh`: Contains the `zsh-edit` helper function, the primary interface for editing configuration files.
--   `install.sh`: A setup script that creates the `~/.zsh_config` symbolic link.
+1.  **Autonomous Documentation**: After completing a significant change, Gemini will autonomously update this `GEMINI.md` file.
+2.  **Atomic Commits**: All related code and documentation changes will be bundled into a single, atomic commit.
+3.  **Framework Evolution**: The framework's own tools (e.g., `zsh-edit`) will be updated to stay in sync with the project structure.
 
 ## Core User Command: `zsh-edit`
 
-The primary method for interacting with this configuration framework is the `zsh-edit` command. It supports keywords for every major component of the framework (e.g., `alias`, `export`, `secret`, `core`, `completion`). The command has full tab-completion support.
+The primary method for interacting with this configuration framework is the `zsh-edit` command. It supports keywords for every major component of the framework and has full tab-completion.
