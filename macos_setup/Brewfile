@@ -1,37 +1,39 @@
-# Brewfile for macOS Setup
-# --------------------------
-# Managed by the macos_setup script.
+# Brewfile - A Template for Your macOS Setup
+# -------------------------------------------
 #
-# How to use:
-# 1. Add your desired packages here.
-# 2. Run the main install.sh script from the macos_setup directory.
+# This file is a template. Uncomment the lines for the software you want to install.
+# Add your own choices here.
 #
 # Learn more: https://github.com/Homebrew/homebrew-bundle
 
-# Tap a new formula repository.
+# Official taps (repositories)
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 
 # --- Command-Line Tools ---
-# Essential tools for development.
+# Essential for development. Uncomment what you need.
 brew "git"
 brew "node"
-brew "wget"
-brew "mas" # Mac App Store CLI
+# brew "python"
+# brew "wget"
+# brew "mas" # Required for Mac App Store apps below
 
 # --- GUI Applications (Casks) ---
-# Your daily-use applications.
+# Your daily-use applications. Uncomment to install.
 cask "google-chrome"
 cask "visual-studio-code"
 cask "iterm2"
-# cask "wechat"
-# cask "tencent-meeting"
+# cask "rectangle" # Window manager
+# cask "spotify" # Music
+# cask "wechat" # Chat
+# cask "tencent-meeting" # Meetings
 
 # --- Fonts ---
 # Useful for terminals and editors.
 cask "font-fira-code-nerd-font"
 
 # --- Mac App Store Apps ---
-# Use `mas search <app_name>` to find app IDs.
+# To use this, you must uncomment `brew "mas"` above.
+# Then, find app IDs with `mas search <app_name>`.
 # mas "WeChat", id: 836500024
 # mas "QQ", id: 451108668

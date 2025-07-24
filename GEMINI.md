@@ -20,8 +20,8 @@ The framework is organized into two distinct, high-level modules:
 │   └── Brewfile      # Defines all software to be installed
 │
 └── zsh_config/       # Modular Zsh configuration framework
-    ├── init.zsh      # Core Zsh loading script
     ├── install.sh    # Script to symlink config to the home directory
+    ├── init.zsh      # Core Zsh loading script
     ├── aliases/
     ├── functions/
     ├── plugins/

@@ -1,41 +1,55 @@
 # System Configuration & Dotfiles
 
-This project automates the setup of a complete macOS development environment, from system software to a powerful, customized Zsh shell.
+This project provides a comprehensive, automated engine for setting up a complete macOS development environment from a clean slate. It handles everything from system-level software to a powerful, customized Zsh shell.
+
+## Overview
+
+The framework is composed of two primary modules that work together:
+
+1.  **`macos_setup`**: The main entry point and installation engine. It automates the installation of Homebrew, system software, GUI applications, and fonts defined in a `Brewfile`.
+2.  **`zsh_config`**: A sophisticated, modular Zsh configuration framework that is automatically installed and configured by the `macos_setup` engine.
 
 ## Quick Start: New Mac Setup
 
 To configure a new Mac from scratch, follow these steps:
 
-1.  **Clone the repository** to your local machine:
+1.  **Clone the Repository**:
     ```sh
-    git clone <your-repo-url> ~/your-project-directory
+    git clone https://github.com/your-username/your-repo-name.git ~/your-project-directory
     ```
 
-2.  **Customize your software list**:
-    - Open the `macos_setup/Brewfile`.
-    - Add, remove, or comment out the command-line tools (`brew`), GUI applications (`cask`), and fonts you want to install.
+2.  **Customize Your Software List**:
+    - Open `macos_setup/Brewfile`.
+    - Add, remove, or comment out the command-line tools (`brew`), GUI applications (`cask`), and fonts (`font`) you wish to install.
 
-3.  **Run the main installation script**:
+3.  **Run the Installation**:
     ```sh
     cd ~/your-project-directory/macos_setup
     bash install.sh
     ```
 
-4.  **Follow the on-screen instructions**.
-    - The script will ask for your confirmation before starting.
-    - It will automatically install Homebrew, all the software listed in your `Brewfile`, and finally set up the custom Zsh configuration.
+4.  **Follow On-Screen Instructions**:
+    - The script will ask for confirmation before proceeding.
+    - It will automatically install Homebrew (if not present), all software from the `Brewfile`, and finally set up the Zsh environment.
 
-5.  **Restart your terminal**.
-    - After the script finishes, close and reopen your terminal (or run `source ~/.zshrc`) to load your new, powerful shell environment.
+5.  **Restart Your Terminal**:
+    - Once the script is complete, restart your terminal to load your new, powerful shell environment.
 
 ## Zsh Configuration (`zsh_config`)
 
-This project includes a sophisticated, modular Zsh configuration managed by the `zsh_config/` directory. The `macos_setup/install.sh` script installs it automatically.
+The `zsh_config` module provides a robust, modular, and high-performance Zsh environment. It is designed to be automatically deployed by the `macos_setup` script.
 
-### Key Features:
+### Key Features
 
-- **Modular Structure**: Configuration is split into `aliases`, `functions`, `plugins`, etc., for easy management.
-- **Plugin Management**: Uses `zinit` for fast, automated plugin handling. Add plugins to `zsh_config/plugins/plugins.zsh`.
-- **Quick Editing**: Use the `zsh-edit <keyword>` command (e.g., `zsh-edit alias`) to quickly open relevant configuration files.
+- **Modular Structure**: Configuration is logically split into directories like `aliases`, `functions`, `plugins`, and `settings` for clean and easy management.
+- **Optimized Loading**: A two-stage loading process in `init.zsh` ensures that all functions and aliases are available before startup scripts are executed, preventing dependency issues.
+- **Plugin Management**: Leverages `zinit` for fast, automated plugin handling. To add or remove plugins, simply edit `zsh_config/plugins/plugins.zsh`.
+- **Easy Editing**: Use the built-in `zsh-edit <keyword>` command (e.g., `zsh-edit alias`, `zsh-edit function`) to quickly open the relevant configuration files.
 
-For more details, see the `zsh_config/README.md` file.
+### Customization
+
+- **Aliases**: Add new `.zsh` files with your aliases to the `aliases/` directory.
+- **Environment Variables**: Add new `.zsh` files with your `export` statements to the `exports/` directory.
+- **Functions**: Add your custom shell functions as `.zsh` files in the `functions/` directory.
+
+Changes will be applied automatically when you restart your terminal.
