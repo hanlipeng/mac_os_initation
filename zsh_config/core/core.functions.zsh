@@ -22,7 +22,7 @@ zsh-edit() {
             ;;
         secret|secrets|local)
             # Add a specific keyword for the local/secret file
-            file_to_edit="$ZSH_CUSTOM_DIR/exports/api_keys.local.zsh"
+            file_to_edit="$ZSH_CUSTOM_DIR/exports/local.zsh"
             ;;
         path)
             file_to_edit="$ZSH_CUSTOM_DIR/exports/path.exports.zsh"
