@@ -8,7 +8,7 @@ To configure a new Mac from scratch, follow these steps:
 
 1.  **Clone the repository** to your local machine:
     ```sh
-    git clone <your-repo-url> ~/system_project
+    git clone <your-repo-url> ~/your-project-directory
     ```
 
 2.  **Customize your software list**:
@@ -17,7 +17,7 @@ To configure a new Mac from scratch, follow these steps:
 
 3.  **Run the main installation script**:
     ```sh
-    cd ~/system_project/macos_setup
+    cd ~/your-project-directory/macos_setup
     bash install.sh
     ```
 

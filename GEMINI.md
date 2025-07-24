@@ -14,7 +14,7 @@ The project is composed of two main modules:
 The framework is organized into two distinct, high-level modules:
 
 ```
-system_project/
+./
 ├── macos_setup/      # macOS installation and setup engine
 │   ├── install.sh    # The main script to run on a new Mac
 │   └── Brewfile      # Defines all software to be installed
