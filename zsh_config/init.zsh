@@ -11,7 +11,8 @@ config_dirs=(
   "$ZSH_CUSTOM_DIR/exports"
   "$ZSH_CUSTOM_DIR/lib"
   "$ZSH_CUSTOM_DIR/aliases"
-  "$ZSH_CUSTOM_DIR/functions"
+  "$ZSH_CUSTOM_DIR/core" # Load framework functions
+  "$ZSH_CUSTOM_DIR/functions" # Load user-defined functions
 )
 
 # Add our custom completions directory to the function path
