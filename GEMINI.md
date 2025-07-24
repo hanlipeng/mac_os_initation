@@ -32,11 +32,13 @@ zsh_config/
 
 ## Development Workflow
 
-This project follows two key workflow principles:
+This project follows a set of autonomous and collaborative principles:
 
-1.  **Atomic Commits**: As per user request, Gemini will commit changes to the Git repository after each significant feature, fix, or refactor is completed. This ensures a clean, well-documented project history.
+1.  **Autonomous Documentation**: After completing a significant change (new feature, refactor, or workflow adjustment), Gemini will autonomously determine if the `GEMINI.md` context file needs updating. If so, it will be updated to reflect the latest state of the project.
 
-2.  **Framework Evolution**: When a new directory or a core feature is added to the framework, the `zsh-edit` function (`core/core.functions.zsh`) and its corresponding completion script (`completions/_zsh-edit.zsh`) will be updated to support it. This ensures the framework's tooling stays in sync with its structure.
+2.  **Atomic Commits**: All related code and documentation changes will be bundled into a single, atomic commit with a clear, descriptive message. This ensures a clean and understandable project history.
+
+3.  **Framework Evolution**: When a new directory or a core feature is added, the framework's own tools (e.g., `zsh-edit` and its completions) will be updated to support it, keeping the project self-consistent.
 
 ## Key Files & Logic
 
