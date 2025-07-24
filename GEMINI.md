@@ -1,25 +1,31 @@
-# Gemini Project Context: Modular Zsh Configuration
+# Gemini Project Context: System Configuration Engine
 
 ## Project Overview
 
-This project is a modular Zsh configuration management system. Its purpose is to replace a single, monolithic `~/.zshrc` file with a structured, version-controllable directory of configuration files. This makes managing aliases, environment variables, functions, and shell settings cleaner and more organized.
+This project has evolved into a comprehensive system configuration engine, primarily targeting macOS. Its main purpose is to automate the setup of a complete development environment from a clean slate.
+
+The project is composed of two main modules:
+
+1.  **`macos_setup`**: The primary entry point and installation engine. It handles the installation of system-level dependencies, software, and applications via Homebrew. It then orchestrates the deployment of other components, such as the Zsh configuration.
+2.  **`zsh_config`**: A sophisticated, modular Zsh configuration framework. It is designed to be installed and managed by the `macos_setup` engine, providing a powerful, customized shell environment.
 
 ## Directory Structure
 
-The framework is organized to clearly separate definitions from execution scripts:
+The framework is organized into two distinct, high-level modules:
 
 ```
-zsh_config/
-├── README.md
-├── core/         # Core framework functions (e.g., zsh-edit)
-├── settings/     # Oh My Zsh theme and plugin settings
-├── exports/      # Environment variables and secrets loaders
-├── aliases/      # User-defined aliases
-├── lib/          # Configurations for 3rd-party tools (pyenv, direnv)
-├── plugins/      # Zinit plugin definitions
-├── functions/    # User-defined functions
-├── completions/  # Zsh completion scripts
-└── startup/      # Scripts to be executed at the end of the loading process
+system_project/
+├── macos_setup/      # macOS installation and setup engine
+│   ├── install.sh    # The main script to run on a new Mac
+│   └── Brewfile      # Defines all software to be installed
+│
+└── zsh_config/       # Modular Zsh configuration framework
+    ├── init.zsh      # Core Zsh loading script
+    ├── install.sh    # Script to symlink config to the home directory
+    ├── aliases/
+    ├── functions/
+    ├── plugins/
+    └── ... (other zsh components)
 ```
 
 ## Loading Architecture
