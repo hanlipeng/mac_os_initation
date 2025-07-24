@@ -1,21 +1,23 @@
 #compdef zsh-edit
 
-# This is a Zsh completion script for the `zsh-edit` function.
-
 _zsh_edit_completions() {
     local -a commands
     commands=(
         'alias:Edit alias configuration'
         'aliases:Edit alias configuration'
-        'export:Edit environment variables and API keys'
-        'exports:Edit environment variables and API keys'
-        'key:Edit environment variables and API keys'
-        'keys:Edit environment variables and API keys'
+        'export:Edit the public exports loader file'
+        'exports:Edit the public exports loader file'
+        'secret:Edit the private/local secrets file'
+        'secrets:Edit the private/local secrets file'
+        'local:Edit the private/local secrets file'
         'path:Edit PATH configuration'
-        'function:Edit helper functions'
-        'functions:Edit helper functions'
+        'function:Open user functions directory'
+        'functions:Open user functions directory'
         'setting:Edit Oh My Zsh settings'
         'settings:Edit Oh My Zsh settings'
+        'core:Edit the core framework functions'
+        'completion:Edit the zsh-edit completion script'
+        'completions:Edit the zsh-edit completion script'
     )
     _describe 'command' commands
 }
