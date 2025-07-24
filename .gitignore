@@ -6,6 +6,7 @@
 .zsh_sessions/
 
 # Local user config that shouldn't be in git
+.zshrc
 local.zsh
 
 # IDE specific
