@@ -56,3 +56,11 @@ The primary method for interacting with this configuration framework is the `zsh
 2.  The command supports tab-completion for all its keywords.
 3.  To open the entire project folder in the default editor, run `zsh-edit` with no arguments.
 4.  After making changes, run `source ~/.zshrc` to apply them to the current session.
+
+## Version Control
+
+The project has been initialized as a Git repository to track changes and facilitate versioning. A `.gitignore` file is included to exclude IDE-specific settings (like `.vscode/`, `.idea/`) and system files (like `.DS_Store`) from version control.
+
+### Development Workflow
+
+As per user request, Gemini will commit changes to the Git repository after each significant feature, fix, or update is completed. This ensures atomic, well-documented commits.
