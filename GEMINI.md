@@ -16,6 +16,7 @@ zsh_config/
 ├── exports/      # Environment variables and secrets loaders
 ├── aliases/      # User-defined aliases
 ├── lib/          # Configurations for 3rd-party tools (pyenv, direnv)
+├── plugins/      # Zinit plugin definitions
 ├── functions/    # User-defined functions
 ├── completions/  # Zsh completion scripts
 └── startup/      # Scripts to be executed at the end of the loading process
@@ -25,7 +26,7 @@ zsh_config/
 
 The `init.zsh` script implements a robust two-stage loading process to prevent dependency issues:
 
-1.  **Definition Stage**: Loads all directories that define the shell environment (`settings`, `exports`, `aliases`, `lib`, `core`, `functions`). After this stage, all variables, aliases, and functions are available.
+1.  **Definition Stage**: Loads all directories that define the shell environment (`settings`, `exports`, `aliases`, `lib`, `plugins`, `core`, `functions`). After this stage, all variables, aliases, and functions are available.
 2.  **Startup Stage**: Executes all scripts in the `startup/` directory. These scripts can safely use any alias or function defined in the first stage.
 
 ## Development Workflow
