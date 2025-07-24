@@ -1,0 +1,37 @@
+# Brewfile for macOS Setup
+# --------------------------
+# Managed by the macos_setup script.
+#
+# How to use:
+# 1. Add your desired packages here.
+# 2. Run the main install.sh script from the macos_setup directory.
+#
+# Learn more: https://github.com/Homebrew/homebrew-bundle
+
+# Tap a new formula repository.
+tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
+
+# --- Command-Line Tools ---
+# Essential tools for development.
+brew "git"
+brew "node"
+brew "wget"
+brew "mas" # Mac App Store CLI
+
+# --- GUI Applications (Casks) ---
+# Your daily-use applications.
+cask "google-chrome"
+cask "visual-studio-code"
+cask "iterm2"
+# cask "wechat"
+# cask "tencent-meeting"
+
+# --- Fonts ---
+# Useful for terminals and editors.
+cask "font-fira-code-nerd-font"
+
+# --- Mac App Store Apps ---
+# Use `mas search <app_name>` to find app IDs.
+# mas "WeChat", id: 836500024
+# mas "QQ", id: 451108668
