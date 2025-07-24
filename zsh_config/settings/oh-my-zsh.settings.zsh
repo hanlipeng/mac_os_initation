@@ -2,4 +2,4 @@
 ZSH_THEME="robbyrussell"
 
 # Which plugins would you like to load?
-plugins=(git)
+plugins=(git aliases zsh-autosuggestions)

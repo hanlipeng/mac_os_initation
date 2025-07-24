@@ -13,6 +13,7 @@ definition_dirs=(
   "$ZSH_CUSTOM_DIR/exports"     # Environment variables and secrets loader
   "$ZSH_CUSTOM_DIR/aliases"     # All alias definitions
   "$ZSH_CUSTOM_DIR/lib"         # Third-party tool configurations (pyenv, direnv)
+  "$ZSH_CUSTOM_DIR/plugins"     # Zinit plugin definitions
   "$ZSH_CUSTOM_DIR/core"        # Core framework functions (zsh-edit)
   "$ZSH_CUSTOM_DIR/functions"   # User-defined functions
 )
