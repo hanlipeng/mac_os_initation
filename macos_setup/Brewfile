@@ -7,33 +7,38 @@
 # Learn more: https://github.com/Homebrew/homebrew-bundle
 
 # Official taps (repositories)
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 
 # --- Command-Line Tools ---
 # Essential for development. Uncomment what you need.
 brew "git"
 brew "node"
-# brew "python"
+brew "kotlin"
+brew "gradle"
+brew "openjdk@21"
+brew "pyenv"
+brew "jenv"
+brew "direnv"
 # brew "wget"
-# brew "mas" # Required for Mac App Store apps below
+brew "mas" # Required for Mac App Store apps below
 
 # --- GUI Applications (Casks) ---
 # Your daily-use applications. Uncomment to install.
 cask "google-chrome"
-cask "visual-studio-code"
+# cask "visual-studio-code"
 cask "iterm2"
 # cask "rectangle" # Window manager
 # cask "spotify" # Music
-# cask "wechat" # Chat
+cask "wechat" # Chat
+cask "raycast" # Chat
+cask "stats" # mac stats app
 # cask "tencent-meeting" # Meetings
 
 # --- Fonts ---
 # Useful for terminals and editors.
-cask "font-fira-code-nerd-font"
+# cask "font-fira-code-nerd-font"
 
 # --- Mac App Store Apps ---
 # To use this, you must uncomment `brew "mas"` above.
 # Then, find app IDs with `mas search <app_name>`.
 # mas "WeChat", id: 836500024
-# mas "QQ", id: 451108668
+mas "Bitwarden", id: 1352778147
