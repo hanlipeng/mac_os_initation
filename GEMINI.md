@@ -46,11 +46,11 @@ This project follows a set of autonomous and collaborative principles:
 
 ## Task Persistence and Recovery
 
-To ensure robustness against interruptions (e.g., closing the terminal), this project uses a task persistence and recovery mechanism centered around a standardized task file.
+To ensure robustness against interruptions (e.g., closing the terminal), this project uses a task persistence and recovery mechanism centered around a standardized task file. The process is strictly enforced to guarantee accurate state tracking.
 
 1.  **Task Template**: All tasks are defined based on the `.gemini_task.json.example` template located in the project root. This file serves as the official, version-controlled schema for any new task.
 2.  **Task Planning & Serialization**: For any multi-step task, Gemini will first read the `.gemini_task.json.example` template. It will then populate this structure with the specific steps of the new task and save it as `.gemini_task.json` in the project root *before* execution begins.
-3.  **State Tracking**: The `.gemini_task.json` file tracks the status of each step (e.g., `pending`, `completed`). As Gemini completes each step, it updates the status in this file.
+3.  **State Tracking**: The `.gemini_task.json` file tracks the status of each step (e.g., `pending`, `completed`). **Crucially, immediately after a step is successfully executed, Gemini MUST update its status to `completed` in the file before proceeding to the next step.** This ensures the task state is always synchronized with the execution progress.
 4.  **Interruption & Recovery**: If the `gemini-cli` session is terminated, the `.gemini_task.json` file remains on disk. Upon restart, Gemini will detect this file and prompt to resume the task from the last uncompleted step.
 5.  **Task Completion**: Once all steps in the plan are successfully executed, the `.gemini_task.json` file is automatically deleted.
 
