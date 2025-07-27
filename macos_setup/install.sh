@@ -39,16 +39,7 @@ main() {
     brew bundle --file="$(dirname "$0")/Brewfile" || error "Brew bundle command failed."
     success "Software from Brewfile installed."
 
-    # Install Zsh Configuration
-    info "Installing Zsh configuration..."
-    local zsh_install_script
-    zsh_install_script="$(dirname "$0")/../zsh_config/install.sh"
-    if [ -f "$zsh_install_script" ]; then
-        /bin/bash "$zsh_install_script" || error "Zsh configuration installation failed."
-        success "Zsh configuration installed."
-    else
-        error "Zsh install script not found at $zsh_install_script"
-    fi
+    
 
     success "macOS setup complete!"
     info "Please restart your terminal to apply all changes."

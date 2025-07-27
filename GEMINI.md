@@ -6,7 +6,9 @@ This project has evolved into a comprehensive system configuration engine, prima
 
 The project is composed of two main modules:
 
-1.  **`macos_setup`**: The primary entry point and installation engine. It handles the installation of system-level dependencies, software, and applications via Homebrew. It then orchestrates the deployment of other components, such as the Zsh configuration.
+The project is orchestrated by a unified `install.sh` script in the root directory, which in turn calls the specialized installers for each module.
+
+1.  **`macos_setup`**: A module that handles the installation of system-level dependencies, software, and applications via Homebrew.
 2.  **`zsh_config`**: A sophisticated, modular Zsh configuration framework. It is designed to be installed and managed by the `macos_setup` engine, providing a powerful, customized shell environment.
 
 ## Directory Structure
