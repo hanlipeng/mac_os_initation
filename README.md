@@ -32,6 +32,14 @@ This is the recommended approach for setting up a new Mac.
 4.  **Restart Your Terminal**:
     - Once the script is complete, restart your terminal to load your new, powerful shell environment.
 
+## Brewfile Management
+
+To update the `macos_setup/Brewfile` with all currently installed Homebrew packages, you can run the `brew-dump.sh` script. This script will merge the existing Brewfile with the newly installed packages, remove duplicates, and create a backup of the old file.
+
+```bash
+./macos_setup/brew-dump.sh
+```
+
 ## Standalone Zsh Configuration (`zsh_config`)
 
 The `zsh_config` module is a standalone, powerful Zsh framework designed for modularity and performance. You can use it on any system with Zsh, even without the `macos_setup` components.
