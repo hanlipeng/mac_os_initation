@@ -9,27 +9,37 @@ The framework is composed of two primary modules that work together:
 1.  **`macos_setup`**: The main entry point and installation engine. It automates the installation of all system dependencies (via Homebrew) and **automatically deploys the `zsh_config` module** to create a unified, ready-to-use environment.
 2.  **`zsh_config`**: A sophisticated, modular Zsh configuration framework. While it is designed to be managed by `macos_setup`, it is also fully independent and can be installed separately.
 
-## Quick Start: Full macOS Setup
+## Quick Start: Unified Installation
 
-This is the recommended approach for setting up a new Mac.
+This project uses a unified installer script at the root of the repository. You can choose to install everything at once or select specific components.
 
 1.  **Clone the Repository**:
     ```sh
     git clone git@github.com:hanlipeng/mac_os_initation.git ~/your-project-directory
+    cd ~/your-project-directory
     ```
 
-2.  **Customize Your Software List**:
-    - Open `macos_setup/Brewfile`.
-    - Add, remove, or comment out the command-line tools (`brew`), GUI applications (`cask`), and fonts (`font`) you wish to install.
+2.  **Run the Installer**:
 
-3.  **Run the Main Installer**:
-    ```sh
-    cd ~/your-project-directory/macos_setup
-    bash install.sh
-    ```
-    This script will install Homebrew, all software from the `Brewfile`, and then automatically run the `zsh_config` installer.
+    *   **To install everything (macOS setup + Zsh config):**
+        ```sh
+        ./install.sh
+        # Or explicitly
+        ./install.sh --all
+        ```
 
-4.  **Restart Your Terminal**:
+    *   **To install only the macOS components:**
+        (Customize `macos_setup/Brewfile` before running)
+        ```sh
+        ./install.sh --macos
+        ```
+
+    *   **To install only the Zsh configuration:**
+        ```sh
+        ./install.sh --zsh
+        ```
+
+3.  **Restart Your Terminal**:
     - Once the script is complete, restart your terminal to load your new, powerful shell environment.
 
 ## Brewfile Management
