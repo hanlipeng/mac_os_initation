@@ -42,7 +42,7 @@ The `init.zsh` script implements a robust two-stage loading process to prevent d
 This project follows a set of autonomous and collaborative principles:
 
 1.  **Autonomous Documentation**: After completing a significant change, Gemini will autonomously update this `GEMINI.md` and `README.md` file.
-2.  **Atomic Commits**: All related code and documentation changes will be bundled into a single, atomic commit.
+2.  **Task Completion and Commits**: Upon the completion of any task, all related changes to code and documentation must be finalized with a `git commit`. This ensures that every task is concluded with a clean, atomic, and traceable entry in the project history.
 3.  **Framework Evolution**: The framework's own tools (e.g., `zsh-edit`) will be updated to stay in sync with the project structure.
 4.  **Language**: All communication will be in Chinese; code comments, git submit message and other use english.
 
