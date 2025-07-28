@@ -12,3 +12,4 @@ local.zsh
 # IDE specific
 .vscode/
 .idea/
+Brewfile.*.bak
